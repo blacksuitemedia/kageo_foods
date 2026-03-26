@@ -1,0 +1,26 @@
+.main-footer {
+    background-color: #006837;
+    color: white;
+    padding: 50px 5% 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 30px;
+}
+
+.f-logo { width: 120px; display: block; margin-bottom: 10px; }
+.f-logo-sub { width: 80px; }
+
+.footer-address h3 { font-size: 1.2rem; margin-bottom: 15px; }
+
+.footer-nav ul { list-style: none; padding: 0; }
+.footer-nav li { margin-bottom: 10px; }
+.footer-nav a { color: white; text-decoration: none; opacity: 0.8; }
+.footer-nav a:hover { opacity: 1; }
+
+.footer-bottom { text-align: center; padding-top: 20px; font-size: 0.8rem; }

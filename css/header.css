@@ -1,0 +1,68 @@
+.navbar {
+    background-color: #006837;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover { color: #fbba00; }
+
+.header-socials i {
+    color: white;
+    margin-left: 15px;
+    font-size: 1.1rem;
+}
+
+/* Hamburger Styles */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    .menu-toggle { display: block; }
+
+    .nav-links {
+        position: absolute;
+        top: 70px; /* Height of your navbar */
+        left: -100%; /* Hide off-screen */
+        flex-direction: column;
+        background-color: #006837;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 20px 0;
+    }
+
+    .nav-links.active {
+        left: 0; /* Slide in */
+    }
+}
