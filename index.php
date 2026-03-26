@@ -66,17 +66,14 @@ include 'config/db.php'; ?>
             </div>
         </section>
 
-        <section class="natural-banner">
-            <div class="banner-title">
-                <img src="images/kravee-logo.png" alt="Kravee" class="ribbon-logo">
-                <h2>ALL NATURAL TASTE</h2>
-                <p>No Additives | No Preservatives</p>
-            </div>
-            <div class="banner-action">
-                <img src="images/peanut-left.png" alt="Peanuts" class="floating-peanut">
-                <button class="btn-get-taste">GET A TASTE</button>
-            </div>
-        </section>
+        <section class="natural-footer-banner">
+        <img src="images/peanut-left.png" class="floating-peanut-left" alt="">
+        <div class="banner-text">
+            <h2>ALL NATURAL TASTE</h2>
+            <p>No Additives | No Preservatives</p>
+        </div>
+        <img src="images/peanut-right.png" class="floating-peanut-right" alt="">
+    </section>
 
        <section class="home-product-grid">
     <?php
@@ -94,7 +91,7 @@ include 'config/db.php'; ?>
                 <div class="card-info">
                     <h3 class="product-title"><?php echo $product['name']; ?></h3>
                     <p class="product-weight"><?php echo $product['weight']; ?> | A Taste of Nature</p>
-                    <a href="product-detail.php?id=<?php echo $product['id']; ?>" class="btn-find-card">FIND PRODUCT</a>
+                    <a href="products.php" class="btn-find-card">FIND PRODUCT</a>
                 </div>
             </div>
             <?php

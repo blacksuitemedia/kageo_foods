@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Products | Kageo</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/product-styles.css">
+    <link rel="stylesheet" href="css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -32,20 +32,28 @@ include 'components/header.php';
             while($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <div class="product-item">
-                    <p class="p-type"><?php echo strtoupper($row['name']); ?></p>
-                    <p class="p-weight"><?php echo $row['weight']; ?></p>
-                    
-                    <img src="uploads/<?php echo $row['image_path']; ?>" alt="<?php echo $row['name']; ?>">
-                    
-                    <div class="p-meta">
-                        <span class="p-price">Ksh <?php echo number_format($row['price']); ?></span>
-                        <span class="p-stars">★★★★☆</span>
-                    </div>
-                    
-                    <a href="product-detail.php?id=<?php echo $row['id']; ?>" class="btn-order-now">
-                        ORDER NOW
-                    </a>
-                </div>
+    <h3 class="p-type"><?php echo strtoupper($row['name']); ?></h3>
+    <p class="p-weight"><?php echo $row['weight']; ?></p>
+    
+    <div class="p-image">
+        <img src="uploads/<?php echo $row['image_path']; ?>" alt="<?php echo $row['name']; ?>">
+    </div>
+    
+    <div class="p-meta">
+        <span class="p-price">Ksh <?php echo number_format($row['price']); ?></span>
+        <div class="p-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <i class="far fa-star"></i>
+        </div>
+    </div>
+    
+    <a href="product-detail.php?id=<?php echo $row['id']; ?>" class="btn-order-now">
+        ORDER NOW
+    </a>
+</div>
                 <?php
             }
         } else {

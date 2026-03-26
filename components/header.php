@@ -11,9 +11,7 @@
         <li><a href="index.php">Home</a></li>
         <li class="dropdown">
             <a href="products.php">Our Products <i class="fas fa-caret-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="product-detail.php">Natural Smooth Butter</a></li>
-            </ul>
+            
         </li>
         <li><a href="about.php">About</a></li>
         <li><a href="blogs.php">Blogs</a></li>

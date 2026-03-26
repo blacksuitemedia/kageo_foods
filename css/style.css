@@ -506,6 +506,28 @@ footer {
     transform: translateY(-10px);
 }
 
+
+/* Natural Footer Banner */
+.natural-footer-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    gap: 40px;
+}
+
+.banner-text h2 {
+    color: #006837;
+    font-size: 4rem;
+    margin: 0;
+}
+
+.banner-text p {
+    color: #006837;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
 /* --- 9. MOBILE FIXES FOR STATS --- */
 @media (max-width: 768px) {
     .home-stats {

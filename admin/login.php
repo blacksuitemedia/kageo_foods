@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="css/login.css">
 <?php
 session_start();
-include 'config/db.php ?>';
+
+include '../config/db.php';
 
 // If already logged in, skip the login page
 if (isset($_SESSION['admin_user'])) {
