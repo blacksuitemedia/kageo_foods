@@ -9,7 +9,7 @@
     </div>
     <ul class="nav-links">
         <li><a href="index.php">Home</a></li>
-        <li class="dropdown">
+        <li> 
             <a href="products.php">Our Products <i class="fas fa-caret-down"></i></a>
             
         </li>

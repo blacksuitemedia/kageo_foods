@@ -12,9 +12,11 @@
         </div>
         <div class="footer-nav">
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="products.php">Our Products</a></li>
-                <li><a href="about.php">About Us</a></li>
+                   <li><a href="about.php">About</a></li>
+        <li><a href="blogs.php">Blogs</a></li>
+        <li><a href="contact-us.php">Contact Us</a></li>
+        <li><a href="admin/admin.php">Admin</a></li>
+        <li><a href="products.php">Our Products</a></li>
             </ul>
         </div>
         <div class="footer-contact">

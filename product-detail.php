@@ -53,7 +53,7 @@ $category = isset($_GET['cat']) ? mysqli_real_escape_string($conn, $_GET['cat'])
             <div class="description-and-nutrition">
                 
                 <div class="text-desc">
-                    <p class="price-row active-price"> <?php echo $product['weight']; ?>gm</p>
+                    <p class="price-row active-price"> <?php echo $product['weight']; ?></p>
                     <h3>Product Description</h3>
                     <p><?php echo $product['description']; ?></p>
                     <p class="price-row active-price">Ksh <?php echo number_format($product['price']); ?>/-</p>

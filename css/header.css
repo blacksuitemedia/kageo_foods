@@ -33,36 +33,48 @@
 
 /* Hamburger Styles */
 .menu-toggle {
-    display: none; /* Hidden on desktop */
+    display: none;
     cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .bar {
-    display: block;
     width: 25px;
     height: 3px;
-    margin: 5px auto;
-    transition: all 0.3s ease-in-out;
-    background-color: white;
+    background-color: white; /* Changed to white so it's visible on green */
+    transition: 0.3s;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 992px) {
-    .menu-toggle { display: block; }
+/* Mobile Adjustments - Wrap in Media Query */
+@media (max-width: 850px) {
+    .menu-toggle {
+        display: flex;
+    }
 
     .nav-links {
         position: absolute;
-        top: 70px; /* Height of your navbar */
-        left: -100%; /* Hide off-screen */
+        top: 70px; 
+        left: -100%; 
         flex-direction: column;
-        background-color: #006837;
+        background-color: #006837; /* Match navbar green */
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        transition: 0.4s;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
         padding: 20px 0;
     }
 
     .nav-links.active {
-        left: 0; /* Slide in */
+        left: 0; 
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .header-socials {
+        display: none;
     }
 }

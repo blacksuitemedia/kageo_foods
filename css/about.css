@@ -7,9 +7,9 @@
 }
 
 /* --- HERO SECTION --- */
-/* --- HERO OVERRIDES FOR ABOUT PAGE --- */
+/* --- 2. HERO PREMIUM SECTION --- */
 .hero-premium {
-    background-image: url('../images/jars-row.jpg');
+     background-image: url('../images/jars-row.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -29,86 +29,95 @@
     align-items: center;
 }
 
-/* The Background Image for About Hero */
-.about-hero-bg {
-    width: 100%;
-    height: 450px;
-    background-image: url('../images/bread-slices.jpg'); /* Different image for variety */
-    background-size: cover;
-    background-position: center;
-    border-radius: 20px;
-    z-index: 1;
-    filter: brightness(0.9);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+.badge-new {
+    background: var(--accent-red);
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
-/* Floating Elements (Synced with Index Styles) */
+.hero-copy h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 900;
+    margin: 20px 0;
+}
+
+.text-purple { color: var(--accent-purple); }
+
+.hero-copy p {
+    font-size: 1.2rem;
+    color: #04693f;
+    background-color: #f4faf7;
+    margin-bottom: 35px;
+    max-width: 500px;
+}
+
+/* Hero Buttons */
+.hero-actions { display: flex; gap: 20px; }
+
+.btn-primary {
+    background: var(--primary-green);
+    color: var(--white);
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+    padding: 13px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.btn-primary:hover { background: var(--dark-green); transform: translateY(-3px); }
+
+/* Hero Visual Overlays */
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* The Background Image Container */
+.hero-jar-background {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+   
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1; /* Sits behind logo and seal */
+    opacity: 1; /* You can lower this to 0.8 if you want it more 'faded' */
+}
+
+/* Ensure Logo and Seal float on top */
 .floating-logo {
     position: absolute;
-    top: -40px;
-    left: 5%;
-    width: 160px;
+    top: 0;
+    left: 20%;
+    width: 150px;
     z-index: 3;
 }
 
 .floating-seal {
     position: absolute;
-    bottom: -20px;
-    right: 5%;
-    width: 120px;
-    z-index: 3;
-}
-
-/* Typography Sync */
-.text-purple {
-    color: #8c2b8d;
-}
-
-.badge-new {
-    background: #006837; /* Green badge instead of red for About page */
-    color: white;
-    padding: 5px 15px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-/* --- RESPONSIVE FIX --- */
-@media (max-width: 992px) {
-    .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .hero-actions {
-        justify-content: center;
-    }
-    
-    .hero-visual {
-        order: -1; /* Image appears above text on mobile */
-        margin-bottom: 40px;
-    }
-}
-
-.page-title {
-    color: var(--white);
-    text-transform: uppercase;
-    font-size: 3.5rem;
-    font-weight: 900;
-    margin: 0;
-}
-
-.title-underline {
+    bottom: 20px;
+    right: 20%;
     width: 100px;
-    height: 6px;
-    background: var(--brand-purple);
-    margin-top: 10px;
-}
-
-.full-width-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    z-index: 3;
 }
 
 /* --- INTRO SECTION --- */

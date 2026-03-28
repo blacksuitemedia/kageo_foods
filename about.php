@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/about-styles.css">
+    <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -15,18 +15,19 @@
 <?php include 'components/header.php';?>
 
 <main class="about-container">
-    <section class="hero-premium">
+ 
+            
+<section class="hero-premium">
         <div class="hero-inner">
             <div class="hero-copy">
                 <span class="badge-new">ESTABLISHED 2014</span>
-                <h1>OUR STORY: <br> <span class="text-purple">BORN IN KENYA</span></h1>
+                <h1>PURELY NATURAL <br> <span class="text-purple">BORN IN KENYA</span></h1>
                 <p>From humble beginnings to your breakfast table, discover how Kageo Foods is redefining natural nutrition through KRAVEE.</p>
                 <div class="hero-actions">
-                    <a href="#intro" class="btn-primary">LEARN MORE</a>
-                    <a href="products.php" class="btn-outline">VIEW PRODUCTS</a>
+                    <a href="products.php" class="btn-primary">LEARN MORE</a>
+                    <a href="about.php" class="btn-outline">OUR STORY</a>
                 </div>
-            </div>
-            
+            </div>            
             
         </div>
     </section>

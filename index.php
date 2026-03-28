@@ -11,9 +11,8 @@
 </head>
 <body>
 
- <?php include 'components/header.php';
- // 1. Include the database connection first!
-include 'config/db.php'; ?>
+ <?php include 'config/db.php'; ?>
+ <?php include 'components/header.php'; ?>
 
     <main>
     <section class="hero-premium">

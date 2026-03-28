@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include 'config/db.php ?>';
+include '../config/db.php';
 
 // 1. Clear existing admin to start fresh
 mysqli_query($conn, "DELETE FROM users WHERE username = 'admin'");

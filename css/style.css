@@ -98,20 +98,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px;
+    min-height: 450px; /* Gives the jar space to exist */
+    z-index: 1; /* Sits below the navbar */
 }
 
-/* The Background Image Container */
 .hero-jar-background {
     width: 100%;
     height: 100%;
     min-height: 450px;
-   
+    background-image: url('../images/jars-row.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 1; /* Sits behind logo and seal */
-    opacity: 1; /* You can lower this to 0.8 if you want it more 'faded' */
+    /* Ensure the path above is correct relative to your CSS file */
 }
 
 /* Ensure Logo and Seal float on top */

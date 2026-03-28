@@ -19,8 +19,8 @@ include 'config/db.php';
 $query = "SELECT * FROM blogs ORDER BY created_at DESC";
 $result = mysqli_query($conn, $query);
 ?>
-    <<div class="blog-container">
-    <h1 class="main-heading">Kageo Foods Blog</h1>
+    <div class="blog-container">
+    <h1 class="main-heading">Kageo News Blog</h1>
 
     <section class="featured-top">
         <h2 class="label-red">Featured Updates</h2>
