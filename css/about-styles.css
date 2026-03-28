@@ -1,50 +1,214 @@
-/* About Page Specifics */
-.about-container {
-    overflow-x: hidden; /* To handle decorative graphics */
+/* --- VARIABLES --- */
+:root {
+    --brand-green: #006837;
+    --brand-purple: #8c2b8d;
+    --white: #ffffff;
+    --grey: #f4f4f4;
+}
+
+/* --- HERO SECTION --- */
+/* --- HERO OVERRIDES FOR ABOUT PAGE --- */
+.hero-premium {
+    background-image: url('../images/jars-row.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+   /* background: radial-gradient(circle at center, var(--white) 0%, #e9e9e9 100%);*/
+    padding: 80px 5%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* The Background Image for About Hero */
+.about-hero-bg {
+    width: 100%;
+    height: 450px;
+    background-image: url('../images/bread-slices.jpg'); /* Different image for variety */
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    z-index: 1;
+    filter: brightness(0.9);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Floating Elements (Synced with Index Styles) */
+.floating-logo {
+    position: absolute;
+    top: -40px;
+    left: 5%;
+    width: 160px;
+    z-index: 3;
+}
+
+.floating-seal {
+    position: absolute;
+    bottom: -20px;
+    right: 5%;
+    width: 120px;
+    z-index: 3;
+}
+
+/* Typography Sync */
+.text-purple {
+    color: #8c2b8d;
+}
+
+.badge-new {
+    background: #006837; /* Green badge instead of red for About page */
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* --- RESPONSIVE FIX --- */
+@media (max-width: 992px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+    }
+    
+    .hero-visual {
+        order: -1; /* Image appears above text on mobile */
+        margin-bottom: 40px;
+    }
+}
+
+.page-title {
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0;
+}
+
+.title-underline {
+    width: 100px;
+    height: 6px;
+    background: var(--brand-purple);
+    margin-top: 10px;
 }
 
 .full-width-img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: cover;
 }
 
+/* --- INTRO SECTION --- */
 .about-intro {
-    padding: 60px 15%;
-    position: relative;
+    padding: 80px 10%;
+    background: var(--white);
     text-align: center;
-    line-height: 1.8;
+    position: relative;
 }
 
-/* VMG Grid (Vision, Mission, Goal) */
+.text-content p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
+
+.text-content strong {
+    color: var(--brand-green);
+}
+
+.triangle-purple {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 100px 100px;
+    border-color: transparent transparent rgba(140, 43, 141, 0.1) transparent;
+}
+
+/* --- VMG GRID --- */
 .vmg-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding: 60px 10%;
-    text-align: center;
+    gap: 30px;
+    padding: 60px 5%;
+    background: var(--grey);
 }
 
-.vmg-item h2 {
-    color: var(--primary-green);
-    font-size: 2.2rem;
+.vmg-item {
+    background: var(--white);
+    padding: 40px 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.vmg-item:hover {
+    transform: translateY(-10px);
+    border-bottom: 5px solid var(--brand-purple);
+}
+
+.vmg-icon {
+    font-size: 2.5rem;
+    color: var(--brand-green);
     margin-bottom: 20px;
 }
 
-/* Commitment Section */
+.vmg-item h2 {
+    color: var(--brand-purple);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* --- COMMITMENT SECTION --- */
 .commitment-section {
-    padding: 60px 10%;
-    background-color: #fff;
+    padding: 100px 10%;
 }
 
 .commitment-content {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 80px;
+}
+
+.commitment-img-wrapper {
+    flex: 1;
+    position: relative;
 }
 
 .commitment-img {
-    flex: 1;
+    width: 100%;
+    border-radius: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.img-accent-box {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 100%;
+    height: 100%;
+    background: var(--brand-green);
+    border-radius: 15px;
+    z-index: 1;
 }
 
 .commitment-text {
@@ -52,41 +216,50 @@
 }
 
 .commitment-text h2 {
-    color: var(--primary-green);
     font-size: 2.5rem;
-    margin: 0;
+    font-weight: 900;
+    color: var(--brand-purple);
 }
 
 .subtitle-green {
-    color: var(--primary-green);
-    font-size: 1.5rem;
+    color: var(--brand-green);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     margin-bottom: 20px;
 }
 
-/* Bottom CTA Banner */
+/* --- CTA BANNER --- */
 .cta-footer-banner {
-    background-image: url('bread-bg-dark.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/peanuts-bg.jpg');
     background-size: cover;
-    background-position: center;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-attachment: fixed;
+    padding: 80px 5%;
     text-align: center;
-    color: white;
+    color: var(--white);
 }
 
-.cta-footer-banner h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+.btn-brand {
+    display: inline-block;
+    background: var(--brand-green);
+    color: var(--white);
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: 0.3s;
 }
 
-/* Responsive */
+.btn-brand:hover {
+    background: var(--brand-purple);
+    transform: scale(1.05);
+}
+
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 992px) {
-    .vmg-grid {
-        grid-template-columns: 1fr;
-    }
-    .commitment-content {
-        flex-direction: column;
-    }
+    .vmg-grid { grid-template-columns: 1fr; }
+    .commitment-content { flex-direction: column; text-align: center; }
+    .img-accent-box { display: none; }
+    .page-title { font-size: 2.5rem; }
 }
