@@ -1,6 +1,6 @@
 :root {
     --admin-green: #006837;
-    --admin-dark: #1a1a1a;
+    --admin-dark: #ffffff;
     --admin-bg: #f4f7f6;
 }
 
@@ -303,12 +303,14 @@ body {
 .modal {
     display: none; /* Hidden by default */
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
     justify-content: center;
     align-items: center;
-    z-index: 1000;
 }
 
 .modal-content {
@@ -369,4 +371,24 @@ textarea {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
+}
+
+
+/* Sidebar Active Tab Styling */
+.admin-nav a {
+    padding: 12px 20px;
+    display: block;
+    color: #fcfcfc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.admin-nav a.active {
+    background: #06f384; /* Kageo Green */
+    color: #161616 !important;
+    border-radius: 5px;
+}
+
+.admin-nav a:hover:not(.active) {
+    background: #03ad5e;
 }

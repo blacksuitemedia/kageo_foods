@@ -25,14 +25,34 @@ include '../config/db.php';
             <span>Admin Portal</span>
         </div>
         <nav class="admin-nav">
-            <a href="admin.php" class="active"><i class="fas fa-box"></i> Products</a>
-            <a href="blogs_admin.php"><i class="fas fa-blog"></i> Blogs</a>
-            <a href="../index.php" target="_blank"><i class="fas fa-eye"></i> View Site</a>
-            <a href="logout.php" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </nav>
+    <a href="#" id="show-products" class="active"><i class="fas fa-box"></i> Products</a>
+    <a href="#" id="show-blogs"><i class="fas fa-blog"></i> Blogs</a>
+    <a href="../index.php" target="_blank"><i class="fas fa-eye"></i> View Site</a>
+    <a href="logout.php" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</nav>
     </aside>
 
     <main class="admin-main">
+        <section class="admin-stats" style="display: flex; gap: 20px; margin-bottom: 30px;">
+    <div style="background: white; padding: 20px; border-radius: 10px; flex: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 5px solid #006837;">
+        <h3 style="margin: 0; color: #777; font-size: 0.9rem;">Total Products</h3>
+        <p style="margin: 5px 0 0; font-size: 1.8rem; font-weight: bold;">
+            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT id FROM products")); ?>
+        </p>
+    </div>
+    <div style="background: white; padding: 20px; border-radius: 10px; flex: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 5px solid #ffc107;">
+        <h3 style="margin: 0; color: #777; font-size: 0.9rem;">Total Blogs</h3>
+        <p style="margin: 5px 0 0; font-size: 1.8rem; font-weight: bold;">
+            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT id FROM blogs")); ?>
+        </p>
+    </div>
+</section>
+        <?php if(isset($_GET['success']) || isset($_GET['update']) || isset($_GET['delete'])): ?>
+    <div style="background: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #c3e6cb;">
+        Action completed successfully!
+    </div>
+<?php endif; ?>
+    <section id="products-section">
         <header class="admin-header">
             <h1>Product Management</h1>
             <button class="btn-add" id="openModal">
@@ -52,20 +72,79 @@ include '../config/db.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    $res = mysqli_query($conn, "SELECT * FROM products ORDER BY id DESC");
-                    while($row = mysqli_fetch_assoc($res)): ?>
+    <?php
+    $res = mysqli_query($conn, "SELECT * FROM products ORDER BY id DESC");
+    while($row = mysqli_fetch_assoc($res)): 
+        // Determine styling for deactivated products
+        $isDeactivated = ($row['status'] == 0);
+        $rowStyle = $isDeactivated ? 'opacity: 0.6; background: #f9f9f9;' : '';
+    ?>
+    <tr style="<?php echo $rowStyle; ?>">
+        <td>
+            <img src="../uploads/<?php echo $row['image_path']; ?>" width="50" class="admin-thumbnail">
+        </td>
+        <td>
+            <?php echo $row['name']; ?>
+            <?php if($isDeactivated): ?>
+                <br><span style="color: #dc3545; font-size: 0.75rem; font-weight: bold;">(HIDDEN)</span>
+            <?php endif; ?>
+        </td>
+        <td>Ksh <?php echo number_format($row['price']); ?></td>
+        <td><?php echo $row['weight']; ?></td>
+        <td>
+            <button class="btn-edit" onclick='editProduct(<?php echo json_encode($row); ?>)'>
+                <i class="fas fa-edit"></i>
+            </button>
+            
+            <a href="scripts/toggle-status.php?id=<?php echo $row['id']; ?>&current_status=<?php echo $row['status']; ?>" 
+               class="btn-status" 
+               title="<?php echo $isDeactivated ? 'Activate' : 'Deactivate'; ?>"
+               style="color: <?php echo ($row['status'] == 1) ? '#28a745' : '#777'; ?>; margin: 0 10px; font-size: 1.2rem;">
+                <i class="fas <?php echo ($row['status'] == 1) ? 'fa-toggle-on' : 'fa-toggle-off'; ?>"></i>
+            </a>
+
+            <a href="scripts/delete-product.php?id=<?php echo $row['id']; ?>" 
+               class="btn-delete" 
+               onclick="return confirm('Are you sure? This cannot be undone.');">
+                <i class="fas fa-trash"></i>
+            </a>
+        </td>
+    </tr>
+    <?php endwhile; ?>
+</tbody>
+            </table>
+        </section>
+    </section>
+
+    <section id="blogs-section" style="display: none;">
+        <header class="admin-header">
+            <h1>Blog Management</h1>
+            <button class="btn-add" id="openBlogModal">
+                <i class="fas fa-plus"></i> Create New Blog
+            </button>
+        </header>
+
+        <section class="admin-table-container">
+            <table class="admin-table">
+                <thead>
                     <tr>
-                        <td><img src="../uploads/<?php echo $row['image_path']; ?>" width="50" class="admin-thumbnail"></td>
-                        <td><?php echo $row['name']; ?></td>
-                        <td>Ksh <?php echo number_format($row['price']); ?></td>
-                        <td><?php echo $row['weight']; ?></td>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $blogRes = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
+                    while($blog = mysqli_fetch_assoc($blogRes)): ?>
+                    <tr>
+                        <td><?php echo date('M d, Y', strtotime($blog['created_at'])); ?></td>
+                        <td><?php echo $blog['title']; ?></td>
                         <td>
-                            <button class="btn-edit" onclick="editProduct(<?php echo $row['id']; ?>)">
+                            <button class="btn-edit" onclick="editBlog(<?php echo $blog['id']; ?>)">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <a href="scripts/delete-product.php?id=<?php echo $row['id']; ?>&image=<?php echo $row['image_path']; ?>" 
-                               class="btn-delete" onclick="return confirm('Delete this product?')">
+                            <a href="scripts/delete-blog.php?id=<?php echo $blog['id']; ?>" class="btn-delete" onclick="return confirm('Delete this blog?');">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
@@ -74,7 +153,8 @@ include '../config/db.php';
                 </tbody>
             </table>
         </section>
-    </main>
+    </section>
+</main>
 </div>
 
 <div class="modal" id="productModal">
@@ -122,6 +202,28 @@ include '../config/db.php';
             </div>
 
             <button type="submit" name="submit" class="btn-save">Save Product</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="blogModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('blogModal')">&times;</span>
+        <h2 id="blogModalTitle">Add Blog Post</h2>
+        <form action="scripts/add-blog.php" method="POST" id="blogForm">
+            <input type="hidden" name="blogId" id="editBlogId">
+            
+            <div class="form-group">
+                <label>Blog Title</label>
+                <input type="text" name="title" id="blogTitleInput" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Content</label>
+                <textarea name="content" id="blogContentInput" rows="10" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-save">Save Blog Post</button>
         </form>
     </div>
 </div>

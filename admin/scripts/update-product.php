@@ -1,35 +1,35 @@
 <?php
 include '../../config/db.php';
 
-if (isset($_POST['productId'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['productId'])) {
+    
+    // 1. Sanitize Inputs
     $id = (int)$_POST['productId'];
     $category_id = (int)$_POST['category_id'];
     $name = mysqli_real_escape_string($conn, $_POST['productName']);
-    $price = $_POST['productPrice'];
+    $price = mysqli_real_escape_string($conn, $_POST['productPrice']);
     $weight = mysqli_real_escape_string($conn, $_POST['productWeight']);
     $desc = mysqli_real_escape_string($conn, $_POST['productDesc']);
 
-    // Check if a new file was uploaded
-    if ($_FILES['productImage']['name'] != "") {
-        // SCENARIO 2: NEW IMAGE UPLOADED
-        $file = $_FILES['productImage'];
-        $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        $newFileName = uniqid('', true) . "." . $fileExt;
-        $fileDestination = '../../uploads/' . $newFileName;
-
-        if (move_uploaded_file($fileTmpName, $fileDestination)) {
-            // Update everything INCLUDING the image path
+    // 2. Image Handling Logic
+    if (!empty($_FILES['productImage']['name'])) {
+        // User uploaded a new image
+        $imageName = time() . '_' . $_FILES['productImage']['name'];
+        $target = "../../uploads/" . $imageName;
+        
+        if (move_uploaded_file($_FILES['productImage']['tmp_name'], $target)) {
+            // Update query WITH new image
             $sql = "UPDATE products SET 
                     category_id = '$category_id',
                     name = '$name', 
                     price = '$price', 
                     weight = '$weight', 
-                    description = '$desc', 
-                    image_path = '$newFileName' 
+                    description = '$desc',
+                    image_path = '$imageName' 
                     WHERE id = $id";
         }
     } else {
-        // SCENARIO 1: NO NEW IMAGE (Keep existing one)
+        // Update query WITHOUT changing the image
         $sql = "UPDATE products SET 
                 category_id = '$category_id',
                 name = '$name', 
@@ -39,11 +39,15 @@ if (isset($_POST['productId'])) {
                 WHERE id = $id";
     }
 
+    // 3. Execute
     if (mysqli_query($conn, $sql)) {
-        header("Location: ../admin.php?update=success");
+        header("Location: ../admin.php?success=product_updated");
         exit();
     } else {
-        echo "Error updating record: " . mysqli_error($conn);
+        echo "Database Error: " . mysqli_error($conn);
     }
+} else {
+    header("Location: ../admin.php");
+    exit();
 }
 ?>

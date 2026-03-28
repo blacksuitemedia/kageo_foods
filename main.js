@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.text())
             .then(data => {
                 headerPlaceholder.innerHTML = data;
-                // After header is loaded, initialize the mobile menu toggle
-                
+                // Initialize menu after loading
+                initMobileMenu(); 
             });
-   
+    } // <-- Added missing bracket here
 
     // 2. Load the Footer
     const footerPlaceholder = document.getElementById('footer-placeholder');
@@ -33,9 +33,8 @@ function initMobileMenu() {
     const menuToggle = document.querySelector('#mobile-menu');
     const navLinks = document.querySelector('.nav-links');
 
-    if (menuToggle) {
+    if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
-            // Toggles the 'active' class on both the button and the menu
             menuToggle.classList.toggle('is-active');
             navLinks.classList.toggle('active');
         });

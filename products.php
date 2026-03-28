@@ -21,9 +21,8 @@
     <div class="product-grid main-catalog">
         <?php
         // Fetch all products from the database
-        $sql = "SELECT * FROM products";
-        $result = mysqli_query($conn, $sql);
-
+       $sql = "SELECT * FROM products WHERE status = 1 ORDER BY id DESC";
+$result = mysqli_query($conn, $sql);
         // Check if there are any products
         if (mysqli_num_rows($result) > 0) {
             // Loop through each row in the database

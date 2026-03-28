@@ -12,7 +12,7 @@
 <body>
 
  <?php include 'config/db.php'; ?>
- <?php include 'components/header.php'; ?>
+ <div id="header-placeholder"></div>
 
     <main>
     <section class="hero-premium">
@@ -44,6 +44,7 @@
             </div>
         </div>
     </section>
+
     <section class="trust-bar">
         <div class="stat-item">
             <i class="fas fa-leaf"></i>
@@ -69,33 +70,35 @@
     </section>
 
 
-       <section class="home-product-grid">
-    <?php
-    $product_query = "SELECT * FROM products ORDER BY id DESC LIMIT 8";
-    $product_result = mysqli_query($conn, $product_query);
-
-    if ($product_result && mysqli_num_rows($product_result) > 0) {
-        while ($product = mysqli_fetch_assoc($product_result)) {
-            ?>
+       <section class="home-product-grid">   
+    
             <div class="product-card">
-                <div class="card-badge">ORIGINAL TASTE</div>
-                <div class="card-image">
-                    <img src="uploads/<?php echo $product['image_path']; ?>" alt="<?php echo $product['name']; ?>">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title"><?php echo $product['name']; ?></h3>
-                    <p class="product-weight"><?php echo $product['weight']; ?> | A Taste of Nature</p>
-                    <a href="products.php" class="btn-find-card">FIND PRODUCT</a>
-                </div>
+                <?php
+                    $product_result = mysqli_query($conn, "SELECT * FROM products WHERE status = 1 ORDER BY id DESC");
+                    while($row = mysqli_fetch_assoc($product_result)): ?>
+                    
+                    <div class="product-card">
+                        <span class="card-badge">NATURAL</span>
+
+                        <div class="card-image"> <img src="uploads/<?php echo $row['image_path']; ?>" alt="<?php echo $row['name']; ?>">
+                        </div>
+
+                        <h3 class="product-title"><?php echo $row['name']; ?></h3> 
+                        <p class="product-weight"><?php echo $row['weight']; ?></p> 
+                        <p class="text-content">
+                            <strong>Ksh <?php echo number_format($row['price']); ?></strong> </p>
+
+                        <a href="product-detail.php?id=<?php echo $row['id']; ?>" class="btn-find-card">
+                            VIEW DETAILS
+                        </a> 
+                    </div>
+                   
+                <?php endwhile; ?>
             </div>
-            <?php
-        }
-    }
-    ?>
-</section>
+        </section>
     </main>
 
-    <?php include 'components/footer.php'; ?>
+   <div id="footer-placeholder"></div>
 
     <script src="main.js"></script>
 </body>

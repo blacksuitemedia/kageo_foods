@@ -113,22 +113,7 @@ body {
     /* Ensure the path above is correct relative to your CSS file */
 }
 
-/* Ensure Logo and Seal float on top */
-.floating-logo {
-    position: absolute;
-    top: 0;
-    left: 20%;
-    width: 150px;
-    z-index: 3;
-}
 
-.floating-seal {
-    position: absolute;
-    bottom: 20px;
-    right: 20%;
-    width: 100px;
-    z-index: 3;
-}
 
 /* --- COMMITMENT SECTION --- */
 .commitment-section {
@@ -263,6 +248,7 @@ body {
     color: var(--brand-green);
     font-size: 1.3rem;
 }
+
 
 .commitment-text p {
     font-size: 1.1rem;
