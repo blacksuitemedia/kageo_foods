@@ -12,10 +12,8 @@
 </head>
 <body>
 
-<?php 
-include 'config/db.php'; 
-include 'components/header.php'; 
-?>
+<?php include 'config/db.php'; ?>
+ <?php include 'components/header.php'; ?>
     <main class="products-container">
     <h1 class="page-title">Our Products</h1>
     <hr class="title-underline">

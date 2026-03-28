@@ -31,7 +31,19 @@
             </div>
         </div>
     </section>
-
+<section class="commitment-section">
+        <div class="commitment-content">
+            <div class="commitment-img-wrapper">
+                <img src="images/factory-production.png" alt="Production Line" class="commitment-img">
+                <div class="img-accent-box"></div>
+            </div>
+            <div class="commitment-text">
+                <h2>OUR COMMITMENT</h2>
+                <p class="subtitle-green">Quality Without Compromise</p>
+                <p>From our factory in Kenya to your breakfast table, we maintain strict quality controls. We don't just make peanut butter; we preserve the nutritional integrity of the peanut. Our commitment is simple: if it's not found in nature, it's not in our jar.</p>
+            </div>
+        </div>
+    </section>
     <section class="trust-bar">
         <div class="stat-item">
             <i class="fas fa-leaf"></i>

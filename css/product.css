@@ -1,3 +1,22 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* This prevents padding from adding to element width */
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+}
 /* --- CONTAINER & BANNERS --- */
 .products-container {
     background-color: #e6e6e6; 

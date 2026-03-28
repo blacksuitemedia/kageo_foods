@@ -9,10 +9,7 @@
     </div>
     <ul class="nav-links">
         <li><a href="index.php">Home</a></li>
-        <li> 
-            <a href="products.php">Our Products <i class="fas fa-caret-down"></i></a>
-            
-        </li>
+        <li>  <a href="products.php">Our Products </a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="blogs.php">Blogs</a></li>
         <li><a href="contact-us.php">Contact Us</a></li>
