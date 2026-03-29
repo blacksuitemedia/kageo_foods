@@ -67,19 +67,49 @@ function editProduct(product) {
   document.getElementById("modalTitle").innerText = "Edit Product";
   document.getElementById("productForm").action = "scripts/save-product.php";
 
-  // Fill basic info
+  // Standard fields
   document.getElementById("productId").value = product.id;
   document.getElementById("pName").value = product.name;
   document.getElementById("pPrice").value = product.price;
   document.getElementById("pWeight").value = product.weight;
+  document.getElementById("pCategory").value = product.category_id;
   document.getElementById("pDesc").value = product.description;
+  document.getElementById("pNutrition").value = product.nutrition_info || "";
+  document.getElementById("pIngredients").value = product.ingredients || "";
 
-  // Set the category
-  let catSelect = document.getElementById("pCategory");
-  catSelect.value = product.category_id;
+  // --- IMAGE PREVIEW LOGIC ---
+  const previewImg = document.getElementById("pImgPreview");
+  if (product.image_path) {
+    previewImg.src = "../uploads/" + product.image_path;
+    previewImg.style.display = "block";
+  } else {
+    previewImg.style.display = "none";
+  }
 
   document.getElementById("productModal").style.display = "block";
 }
+
+function duplicateProduct(product) {
+  // 1. Change Modal Title and Action
+  document.getElementById("modalTitle").innerText = "Duplicate Product (New)";
+  document.getElementById("productForm").action = "scripts/save-product.php";
+
+  // 2. Clear the Hidden ID field (Crucial: This makes it a NEW insert, not an update)
+  document.getElementById("productId").value = "";
+
+  // 3. Pre-fill the fields with existing data
+  document.getElementById("pName").value = product.name + " (Copy)";
+  document.getElementById("pPrice").value = product.price;
+  document.getElementById("pWeight").value = product.weight;
+  document.getElementById("pCategory").value = product.category_id;
+  document.getElementById("pDesc").value = product.description;
+  document.getElementById("pNutrition").value = product.nutrition_info || "";
+  document.getElementById("pIngredients").value = product.ingredients || "";
+
+  // 4. Show the Modal
+  document.getElementById("productModal").style.display = "block";
+}
+
 /**
  * 4. BLOG LOGIC (Add & Edit)
  */

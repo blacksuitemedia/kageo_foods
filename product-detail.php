@@ -97,18 +97,27 @@ if (isset($_GET['id'])) {
                         </div>
 
                         <div class="nutrition-fact-card">
-                            <div class="nutrition-header">NUTRITON FACT</div>
+                            <div class="nutrition-header">NUTRITION FACTS</div>
                             <div class="nutrition-body">
-                                <p class="serving">Serving 1.0 1Table spoon</p>
-                                <div class="n-row"><span>Calories:</span> <span>190</span></div>
-                                <div class="n-row"><span>Total Fat</span> <span>16g</span></div>
-                                <div class="n-row"><span>Saturated</span> <span>3g</span></div>
-                                <div class="n-row"><span>Protein</span> <span>4g</span></div>
-                                <div class="n-row"><span>Vitamin C</span> <span>0%</span></div>
+                                <?php
+                                if (!empty($product['nutrition_info'])) {
+                                    // Split the text into lines
+                                    $lines = explode("\n", str_replace("\r", "", $product['nutrition_info']));
+
+                                    foreach ($lines as $line) {
+                                        if (strpos($line, ':') !== false) {
+                                            list($label, $value) = explode(':', $line, 2);
+                                            echo '<div class="n-row"><span>' . trim($label) . '</span> <span>' . trim($value) . '</span></div>';
+                                        }
+                                    }
+                                } else {
+                                    echo "<p style='font-size:0.8rem; padding:10px 0;'>Nutritional information coming soon.</p>";
+                                }
+                                ?>
 
                                 <div class="ingredients-box">
                                     <h4>INGREDIENTS:</h4>
-                                    <p>Roasted Peanut, Peanut oil, Salt</p>
+                                    <p>100% Natural Ingredients. No Preservatives.</p>
                                 </div>
                             </div>
                         </div>

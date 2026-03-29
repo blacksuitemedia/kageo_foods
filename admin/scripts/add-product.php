@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
                 // 2. Updated SQL to include category_id
                 $sql = "INSERT INTO products (category_id, name, price, weight, description, image_path) 
                         VALUES ('$category_id', '$name', '$price', '$weight', '$desc', '$newFileName')";
-                
+
                 if (mysqli_query($conn, $sql)) {
                     header("Location: ../admin.php?upload=success");
                     exit(); // Always exit after a header redirect
@@ -43,4 +43,3 @@ if (isset($_POST['submit'])) {
         echo "Invalid file type.";
     }
 }
-?>

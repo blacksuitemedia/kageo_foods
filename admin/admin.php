@@ -99,7 +99,9 @@ include '../config/db.php';
                                         <button class="btn-edit" onclick='editProduct(<?php echo json_encode($row); ?>)'>
                                             <i class="fas fa-edit"></i>
                                         </button>
-
+                                        <button class="btn-duplicate" title="Duplicate" onclick='duplicateProduct(<?php echo json_encode($row); ?>)' style="background: #6c757d; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
                                         <a href="scripts/toggle-status.php?id=<?php echo $row['id']; ?>&current_status=<?php echo $row['status']; ?>"
                                             class="btn-status"
                                             title="<?php echo $isDeactivated ? 'Activate' : 'Deactivate'; ?>"
@@ -213,54 +215,68 @@ include '../config/db.php';
         <div class="modal-content">
             <span class="close" onclick="closeModal('productModal')">&times;</span>
             <h2 id="modalTitle">Add Product</h2>
-            <form action="scripts/add-product.php" method="POST" enctype="multipart/form-data" id="productForm">
-                <input type="hidden" name="productId" id="productId">
+            <form id="productForm" action="scripts/save-product.php" method="POST" enctype="multipart/form-data">
+
+                <input type="hidden" name="id" id="productId">
+                <div class="form-group">
+                    <label>Product Image</label>
+                    <div style="margin-bottom: 10px;">
+                        <img id="pImgPreview" src="" alt="Preview" style="max-width: 100px; border-radius: 5px; display: none; border: 1px solid #ddd;">
+                    </div>
+                    <input type="file" name="image" id="pImage" accept="image/*">
+                    <small style="color: #888;">Leave blank to keep the current image.</small>
+                </div>
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" name="name" id="pName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Price (Ksh)</label>
+                    <input type="number" name="price" id="pPrice" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Weight (e.g. 400g)</label>
+                    <input type="text" name="weight" id="pWeight" required>
+                </div>
 
                 <div class="form-group">
                     <label>Category</label>
                     <select name="category_id" id="pCategory" required>
-                        <option value="">-- Select Active Category --</option>
+                        <option value="">-- Select Category --</option>
                         <?php
-                        // We only pull categories that are currently ACTIVE (status = 1)
-                        $cats = mysqli_query($conn, "SELECT * FROM categories WHERE status = 1 ORDER BY category_name ASC");
+                        // Fetch only active categories for the dropdown
+                        $cat_query = "SELECT * FROM categories WHERE status = 1 ORDER BY category_name ASC";
+                        $cat_result = mysqli_query($conn, $cat_query);
 
-                        if (mysqli_num_rows($cats) > 0) {
-                            while ($c = mysqli_fetch_assoc($cats)) {
-                                echo "<option value='" . $c['id'] . "'>" . $c['category_name'] . "</option>";
+                        if ($cat_result && mysqli_num_rows($cat_result) > 0) {
+                            while ($cat = mysqli_fetch_assoc($cat_result)) {
+                                echo '<option value="' . $cat['id'] . '">' . $cat['category_name'] . '</option>';
                             }
                         } else {
-                            echo "<option value='' disabled>No active categories found. Please create one first.</option>";
+                            echo '<option value="" disabled>No active categories found</option>';
                         }
                         ?>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="productName" id="pName" placeholder="Product Name" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Price</label>
-                    <input type="number" name="productPrice" id="pPrice" placeholder="Price" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Weight</label>
-                    <input type="text" name="productWeight" id="pWeight" placeholder="Weight (e.g. 400g)" required>
-                </div>
-
-                <div class="form-group">
                     <label>Description</label>
-                    <textarea name="productDesc" id="pDesc" placeholder="Description"></textarea>
+                    <textarea name="description" id="pDesc" rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>Product Image (Leave blank if not changing)</label>
-                    <input type="file" name="productImage" accept="image/*">
+                    <label>Nutrition Facts</label>
+                    <textarea name="nutrition_info" id="pNutrition" rows="4" placeholder="Calories: 190"></textarea>
                 </div>
 
-                <button type="submit" name="submit" class="btn-save">Save Product</button>
+                <div class="form-group">
+                    <label>Ingredients</label>
+                    <textarea name="ingredients" id="pIngredients" rows="2" placeholder="Roasted Peanuts, Salt"></textarea>
+                </div>
+
+                <button type="submit" class="btn-save">Save Product</button>
             </form>
         </div>
     </div>
