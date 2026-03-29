@@ -1,6 +1,6 @@
 :root {
   --primary-green: #006837;
-  --accent-orange: #e67e22;
+  --accent-orange: #006837;
   --dark-text: #2c3e50;
   --light-bg: #fdfdfd;
   --whatsapp-green: #25d366;
@@ -63,6 +63,7 @@
   color: var(--accent-orange);
   margin-bottom: 25px;
   display: block;
+  text-align: center;
 }
 
 .p-weight {
@@ -81,6 +82,7 @@
   border-left: 4px solid var(--primary-green);
   padding-left: 15px;
   margin: 40px 0 15px;
+  text-align: center;
 }
 
 .text-desc p {

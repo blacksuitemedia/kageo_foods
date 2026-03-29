@@ -117,7 +117,12 @@ if (isset($_GET['id'])) {
 
                                 <div class="ingredients-box">
                                     <h4>INGREDIENTS:</h4>
-                                    <p>100% Natural Ingredients. No Preservatives.</p>
+                                    <p>
+                                        <?php
+                                        // Check if ingredients exist in database, otherwise show a default message
+                                        echo !empty($product['ingredients']) ? nl2br(htmlspecialchars($product['ingredients'])) : '100% Natural Ingredients. No Preservatives.';
+                                        ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
