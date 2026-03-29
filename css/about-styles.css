@@ -1,0 +1,92 @@
+/* About Page Specifics */
+.about-container {
+    overflow-x: hidden; /* To handle decorative graphics */
+}
+
+.full-width-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-intro {
+    padding: 60px 15%;
+    position: relative;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* VMG Grid (Vision, Mission, Goal) */
+.vmg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.vmg-item h2 {
+    color: var(--primary-green);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+/* Commitment Section */
+.commitment-section {
+    padding: 60px 10%;
+    background-color: #fff;
+}
+
+.commitment-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.commitment-img {
+    flex: 1;
+}
+
+.commitment-text {
+    flex: 1;
+}
+
+.commitment-text h2 {
+    color: var(--primary-green);
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.subtitle-green {
+    color: var(--primary-green);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Bottom CTA Banner */
+.cta-footer-banner {
+    background-image: url('bread-bg-dark.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.cta-footer-banner h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .vmg-grid {
+        grid-template-columns: 1fr;
+    }
+    .commitment-content {
+        flex-direction: column;
+    }
+}
