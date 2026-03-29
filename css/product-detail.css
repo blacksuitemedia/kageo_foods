@@ -1,92 +1,221 @@
-/* --- LAYOUT --- */
+:root {
+  --primary-green: #006837;
+  --accent-orange: #e67e22;
+  --dark-text: #2c3e50;
+  --light-bg: #fdfdfd;
+  --whatsapp-green: #25d366;
+}
+
+/* Base Page Setup */
+.product-detail-page {
+  max-width: 1200px;
+  margin: 120px auto 60px; /* Clears fixed header */
+  padding: 0 5%;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 .product-detail-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr; /* Visual area left, Info right */
-    gap: 40px;
-    padding: 60px 5%;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* Slightly larger image area */
+  gap: 60px;
+  align-items: start;
 }
 
-/* --- VISUAL AREA (The Overlay Logic) --- */
+/* --- IMAGE SECTION --- */
 .product-visual-area {
-    position: relative;
-    text-align: center;
+  position: sticky;
+  top: 120px; /* Sticks image while reading text */
 }
-
-
 
 .main-product-img-wrapper {
-    position: relative;
-    display: inline-block;
+  background: #fff;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-main-img {
-    width: 100%;
-    max-width: 400px;
+  width: 100%;
+  max-height: 550px;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.product-main-img:hover {
+  transform: scale(1.03);
+}
 
-
-/* --- TYPOGRAPHY --- */
+/* --- CONTENT SECTION --- */
 .product-main-title {
-    color: #8c2b8d; /* Purple from design */
-    font-size: 3.5rem;
-    font-weight: 900;
-    margin-bottom: 20px;
+  font-size: 2.8rem;
+  color: var(--primary-green);
+  margin: 0 0 10px 0;
+  font-weight: 800;
+  line-height: 1.1;
 }
 
-.price-row {
-    color: #006837;
-    font-weight: 900;
-    font-size: 3rem;
-    margin: 5px 0;
+.price-row.active-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  margin-bottom: 25px;
+  display: block;
 }
 
-/* --- NUTRITION CARD --- */
-.description-and-nutrition {
-    display: flex;
-    gap: 30px;
-    margin-top: 30px;
+.p-weight {
+  display: inline-block;
+  background: #eee;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
+.text-desc h3 {
+  font-size: 1.3rem;
+  color: var(--dark-text);
+  border-left: 4px solid var(--primary-green);
+  padding-left: 15px;
+  margin: 40px 0 15px;
+}
+
+.text-desc p {
+  line-height: 1.8;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+/* --- ORDER BOX --- */
+.order-box {
+  background: #f8faf9;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 40px 0;
+  border: 1px solid #e9efec;
+}
+
+.order-box h4 {
+  margin-bottom: 20px;
+  color: var(--dark-text);
+  font-size: 1.1rem;
+}
+
+.btn-whatsapp-order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--whatsapp-green);
+  color: white;
+  text-decoration: none;
+  padding: 18px 25px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp-order:hover {
+  background: #1eb956;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp-order i {
+  font-size: 1.5rem;
+  margin-right: 12px;
+}
+
+/* --- NUTRITION LABEL --- */
 .nutrition-fact-card {
-    background: #006837;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    min-width: 250px;
+  border: 1px solid #000;
+  padding: 15px;
+  max-width: 320px;
+  margin-top: 50px;
+  background: #fff;
+  box-shadow: 5px 5px 0px #000;
 }
 
 .nutrition-header {
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 2px solid #fff;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    color: #ffd700;
+  font-family: "Arial Black", sans-serif;
+  font-size: 1.8rem;
+  border-bottom: 10px solid #049634;
+  padding-bottom: 2px;
+  margin-bottom: 5px;
 }
 
 .n-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding: 3px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  padding: 6px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
-/* --- ORDER BUTTON --- */
-.btn-order-call {
-    display: inline-block;
-    background: #006837;
-    color: white;
-    padding: 12px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 20px;
-    transition: transform 0.2s;
+/* --- RESPONSIVE TABLET & MOBILE --- */
+@media (max-width: 992px) {
+  .product-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .product-visual-area {
+    position: relative;
+    top: 0;
+  }
+
+  .product-info-content {
+    text-align: center;
+  }
+
+  .text-desc h3 {
+    text-align: left;
+  }
+
+  .text-desc p {
+    text-align: left;
+  }
+
+  .nutrition-fact-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quantity-controls {
+    justify-content: center;
+  }
 }
 
-.btn-order-call:hover { transform: scale(1.05); }
+@media (max-width: 600px) {
+  .product-detail-page {
+    margin-top: 100px;
+    padding: 0 20px;
+  }
 
+  .product-main-title {
+    font-size: 2rem;
+  }
+
+  .price-row.active-price {
+    font-size: 1.6rem;
+  }
+
+  .main-product-img-wrapper {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .order-box {
+    padding: 20px;
+  }
+
+  .btn-whatsapp-order {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+}

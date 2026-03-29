@@ -1,37 +1,35 @@
 <?php
+session_start();
+// 1. Gatekeeper: Ensure only logged-in admins can delete
+if (!isset($_SESSION['admin_user'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
 include '../../config/db.php';
 
 if (isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 
-    // 1. Check if the blog exists and if it has an image (Optional prep for future)
-    $query = "SELECT * FROM blogs WHERE id = $id";
-    $result = mysqli_query($conn, $query);
+    // 2. Fetch the image filename before deleting the record
+    $result = mysqli_query($conn, "SELECT image_path FROM blogs WHERE id = $id");
+    if ($row = mysqli_fetch_assoc($result)) {
+        $image_to_delete = $row['image_path'];
+        $file_path = "../../uploads/blog/" . $image_to_delete;
 
-    if ($result && mysqli_num_rows($result) > 0) {
-        $blog = mysqli_fetch_assoc($result);
-
-        // 2. Delete associated image file if you add one later
-        if (!empty($blog['image_path'])) {
-            $filePath = "../../uploads/blogs/" . $blog['image_path'];
-            if (file_exists($filePath)) {
-                unlink($filePath);
-            }
+        // 3. Delete the physical file from the server if it exists
+        if (!empty($image_to_delete) && file_exists($file_path)) {
+            unlink($file_path);
         }
+    }
 
-        // 3. Delete the record from the database
-        $deleteSql = "DELETE FROM blogs WHERE id = $id";
-        if (mysqli_query($conn, $deleteSql)) {
-            // Redirect back with a success message
-            header("Location: ../admin.php?delete=success");
-            exit();
-        } else {
-            echo "Database Error: " . mysqli_error($conn);
-        }
+    // 4. Delete the record from the database
+    $delete_query = "DELETE FROM blogs WHERE id = $id";
+    if (mysqli_query($conn, $delete_query)) {
+        header("Location: ../admin.php?delete=1");
     } else {
-        echo "Error: Blog post not found.";
+        echo "Error deleting record: " . mysqli_error($conn);
     }
 } else {
     header("Location: ../admin.php");
 }
-?>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Contact Us | Kageo</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/contact-styles.css">
@@ -9,8 +10,9 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
+
 <body>
-<?php include 'components/header.php'; ?>
+    <div id="header-placeholder"></div>
     <main class="contact-container">
         <h1 class="page-title">Contact Us</h1>
         <p class="subtitle">Any questions or remarks? just write us a message!</p>
@@ -63,6 +65,7 @@
         loadComponent('header-placeholder', 'components/header.php');
         loadComponent('footer-placeholder', 'components/footer.php');
     </script>
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>

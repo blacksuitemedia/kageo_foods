@@ -1,80 +1,105 @@
 .navbar {
-    background-color: #006837;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  background-color: #006837;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.3s;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s;
 }
 
-.nav-links a:hover { color: #fbba00; }
+.nav-links a:hover {
+  color: #fbba00;
+}
 
 .header-socials i {
-    color: white;
-    margin-left: 15px;
-    font-size: 1.1rem;
+  color: white;
+  margin-left: 15px;
+  font-size: 1.1rem;
 }
 
 /* Hamburger Styles */
 .menu-toggle {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .bar {
-    width: 25px;
-    height: 3px;
-    background-color: white; /* Changed to white so it's visible on green */
-    transition: 0.3s;
+  width: 25px;
+  height: 3px;
+  background-color: white; /* Changed to white so it's visible on green */
+  transition: 0.3s;
 }
 
 /* Mobile Adjustments - Wrap in Media Query */
 @media (max-width: 850px) {
-    .menu-toggle {
-        display: flex;
-    }
+  .menu-toggle {
+    display: flex;
+  }
 
-    .nav-links {
-        position: absolute;
-        top: 70px; 
-        left: -100%; 
-        flex-direction: column;
-        background-color: #006837; /* Match navbar green */
-        width: 100%;
-        text-align: center;
-        transition: 0.4s;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        z-index: 1000;
-        padding: 20px 0;
-    }
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    flex-direction: column;
+    background-color: #006837; /* Match navbar green */
+    width: 100%;
+    text-align: center;
+    transition: 0.4s;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 20px 0;
+  }
 
-    .nav-links.active {
-        left: 0; 
-    }
+  .nav-links.active {
+    left: 0;
+  }
 
-    .nav-links li {
-        margin: 15px 0;
-    }
+  .nav-links li {
+    margin: 15px 0;
+  }
 
-    .header-socials {
-        display: none;
-    }
+  .header-socials {
+    display: none;
+  }
+}
+
+/* Target the placeholder div specifically */
+#header-placeholder {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* Higher z-index to stay above the 'commitment' section */
+  background-color: #ffffff; /* Crucial: ensures content doesn't bleed through */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Push the body down so the Hero section isn't hidden */
+body {
+  padding-top: 80px;
+}
+
+/* If your header inside the placeholder has a specific height, 
+   make sure the placeholder matches it */
+#header-placeholder header {
+  margin: 0;
+  padding: 0;
 }

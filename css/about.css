@@ -1,274 +1,239 @@
-/* --- VARIABLES --- */
 :root {
-    --brand-green: #006837;
-    --brand-purple: #8c2b8d;
-    --white: #ffffff;
-    --grey: #f4f4f4;
+  --primary-green: #006837;
+  --accent-orange: #e67e22;
+  --dark-grey: #2c3e50;
+  --light-grey: #f4f7f6;
 }
 
 /* --- HERO SECTION --- */
-/* --- 2. HERO PREMIUM SECTION --- */
 .hero-premium {
-     background-image: url('../images/jars-row.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-   /* background: radial-gradient(circle at center, var(--white) 0%, #e9e9e9 100%);*/
-    padding: 80px 5%;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/jars-row.jpg"); /* Add a nice high-res background */
+  background-size: cover;
+  background-position: center;
+  padding: 160px 5% 100px; /* Large top padding for fixed header */
+  text-align: center;
+  color: white;
 }
 
-.hero-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+.hero-premium h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.text-purple {
+  color: #d4a017; /* Changing 'purple' to a nice Gold for Kenya/Honey theme */
 }
 
 .badge-new {
-    background: var(--accent-red);
-    color: var(--white);
-    padding: 5px 15px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-.hero-copy h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1.1;
-    font-weight: 900;
-    margin: 20px 0;
-}
-
-.text-purple { color: var(--accent-purple); }
-
-.hero-copy p {
-    font-size: 1.2rem;
-    color: #04693f;
-    background-color: #f4faf7;
-    margin-bottom: 35px;
-    max-width: 500px;
-}
-
-/* Hero Buttons */
-.hero-actions { display: flex; gap: 20px; }
-
-.btn-primary {
-    background: var(--primary-green);
-    color: var(--white);
-    padding: 15px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: var(--transition);
-}
-
-.btn-outline {
-    border: 2px solid var(--primary-green);
-    color: var(--primary-green);
-    padding: 13px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: var(--transition);
-}
-
-.btn-primary:hover { background: var(--dark-green); transform: translateY(-3px); }
-
-/* Hero Visual Overlays */
-.hero-visual {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-}
-
-/* The Background Image Container */
-.hero-jar-background {
-    width: 100%;
-    height: 100%;
-    min-height: 450px;
-   
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1; /* Sits behind logo and seal */
-    opacity: 1; /* You can lower this to 0.8 if you want it more 'faded' */
-}
-
-/* Ensure Logo and Seal float on top */
-.floating-logo {
-    position: absolute;
-    top: 0;
-    left: 20%;
-    width: 150px;
-    z-index: 3;
-}
-
-.floating-seal {
-    position: absolute;
-    bottom: 20px;
-    right: 20%;
-    width: 100px;
-    z-index: 3;
+  background: var(--accent-orange);
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 /* --- INTRO SECTION --- */
 .about-intro {
-    padding: 80px 10%;
-    background: var(--white);
-    text-align: center;
-    position: relative;
+  padding: 80px 10%;
+  text-align: center;
+  background: white;
 }
 
-.text-content p {
-    font-size: 1.2rem;
-    color: #555;
-    line-height: 1.8;
-    max-width: 900px;
-    margin: 0 auto 20px;
+.intro-content p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: var(--dark-grey);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.text-content strong {
-    color: var(--brand-green);
-}
-
-.triangle-purple {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0 100px 100px;
-    border-color: transparent transparent rgba(140, 43, 141, 0.1) transparent;
-}
-
-/* --- VMG GRID --- */
+/* --- VMG GRID (Vision, Mission, Goal) --- */
 .vmg-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 60px 5%;
-    background: var(--grey);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 60px 5%;
+  background: var(--light-grey);
 }
 
 .vmg-item {
-    background: var(--white);
-    padding: 40px 25px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: 0.3s;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border-bottom: 4px solid transparent;
 }
 
 .vmg-item:hover {
-    transform: translateY(-10px);
-    border-bottom: 5px solid var(--brand-purple);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid var(--primary-green);
 }
 
 .vmg-icon {
-    font-size: 2.5rem;
-    color: var(--brand-green);
-    margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: var(--primary-green);
+  margin-bottom: 20px;
 }
 
 .vmg-item h2 {
-    color: var(--brand-purple);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--dark-grey);
+}
+
+.vmg-item p {
+  color: #666;
+  line-height: 1.6;
 }
 
 /* --- COMMITMENT SECTION --- */
 .commitment-section {
-    padding: 100px 10%;
+  padding: 80px 5%;
+  background-color: #ffffff;
 }
 
 .commitment-content {
-    display: flex;
-    align-items: center;
-    gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 60px; /* Space between image and text */
 }
 
+/* Image Wrapper with Accent Box */
 .commitment-img-wrapper {
-    flex: 1;
-    position: relative;
+  flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .commitment-img {
-    width: 100%;
-    border-radius: 15px;
-    position: relative;
-    z-index: 2;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: block;
+  position: relative;
+  z-index: 2;
 }
 
 .img-accent-box {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 100%;
-    height: 100%;
-    background: var(--brand-green);
-    border-radius: 15px;
-    z-index: 1;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 150px;
+  height: 150px;
+  background-color: var(--primary-green);
+  border-radius: 15px;
+  z-index: 1;
+  opacity: 0.2;
 }
 
+/* Text Styling */
 .commitment-text {
-    flex: 1;
+  flex: 1;
 }
 
 .commitment-text h2 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--brand-purple);
+  font-size: 2.2rem;
+  color: var(--dark-grey);
+  margin-bottom: 10px;
 }
 
 .subtitle-green {
-    color: var(--brand-green);
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
+  color: var(--primary-green);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
 }
 
+.commitment-text p:not(.subtitle-green) {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .commitment-section {
+    padding: 50px 5%;
+  }
+
+  .commitment-content {
+    flex-direction: column; /* Stacks image on top of text */
+    text-align: center;
+  }
+
+  .commitment-img-wrapper {
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .img-accent-box {
+    display: none; /* Cleaner look on mobile */
+  }
+
+  .commitment-text h2 {
+    font-size: 1.8rem;
+  }
+}
 /* --- CTA BANNER --- */
 .cta-footer-banner {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/peanuts-bg.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    padding: 80px 5%;
-    text-align: center;
-    color: var(--white);
+  background:
+    linear-gradient(rgba(0, 104, 55, 0.9), rgba(0, 104, 55, 0.9)),
+    url("images/jars-row.jpg");
+  padding: 100px 5%;
+  text-align: center;
+  color: white;
+}
+
+.overlay-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
 }
 
 .btn-brand {
-    display: inline-block;
-    background: var(--brand-green);
-    color: var(--white);
-    padding: 15px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 20px;
-    transition: 0.3s;
+  display: inline-block;
+  margin-top: 25px;
+  padding: 15px 40px;
+  background: var(--accent-orange);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 .btn-brand:hover {
-    background: var(--brand-purple);
-    transform: scale(1.05);
+  background: #cf6e1d;
+  transform: scale(1.05);
 }
 
-/* --- MOBILE RESPONSIVE --- */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 992px) {
-    .vmg-grid { grid-template-columns: 1fr; }
-    .commitment-content { flex-direction: column; text-align: center; }
-    .img-accent-box { display: none; }
-    .page-title { font-size: 2.5rem; }
+  .vmg-grid {
+    grid-template-columns: 1fr; /* Stack on tablet/mobile */
+  }
+  .hero-premium h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-premium {
+    padding: 120px 5% 60px;
+  }
+  .intro-content p {
+    font-size: 1.1rem;
+  }
 }

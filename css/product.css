@@ -1,154 +1,251 @@
-
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text-dark);
+}
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* This prevents padding from adding to element width */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* This prevents padding from adding to element width */
 }
 
-html, body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
-
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    color: var(--text-dark);
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-dark);
 }
 /* --- CONTAINER & BANNERS --- */
 .products-container {
-    background-color: #e6e6e6; 
-    padding-bottom: 50px;
+  background-color: #e6e6e6;
+  padding-bottom: 50px;
 }
 
 .latest-header {
-    background-color: #ff0000; /* Red banner as requested */
-    color: white;
-    text-align: center;
-    padding: 15px;
-    font-size: 1.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  background-color: #ff0000; /* Red banner as requested */
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* --- THE GRID (Fixed logic) --- */
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Forces 4 items per row on desktop */
-    gap: 25px;
-    padding: 40px 5%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Forces 4 items per row on desktop */
+  gap: 25px;
+  padding: 40px 5%;
 }
 
 /* --- THE CARD --- */
 .product-item {
-    background: #fff;
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .product-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* --- TYPOGRAPHY (Matched to KRAVEE Card) --- */
 .p-type {
-    color: #006837; 
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+  color: #006837;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-transform: uppercase;
 }
 
 .p-weight {
-    color: #006837;
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 15px;
+  color: #006837;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
 }
 
 /* --- IMAGE CONTAINER --- */
 .p-image {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .p-image img {
-    max-height: 100%;
-    width: auto;
-    object-fit: contain;
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
 /* --- META (Price & Stars) --- */
 .p-meta {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 0 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 5px;
 }
 
 .p-price {
-    color: #006837;
-    font-size: 1.6rem;
-    font-weight: 800;
+  color: #006837;
+  font-size: 1.6rem;
+  font-weight: 800;
 }
 
 .p-stars {
-    color: #ffd700; /* Gold/Yellow Stars */
-    font-size: 1rem;
+  color: #ffd700; /* Gold/Yellow Stars */
+  font-size: 1rem;
 }
 
 /* --- BUTTON (Signature Green) --- */
 .btn-order-now {
-    width: 100%;
-    background-color: #024626; /* Deep Green from reference image */
-    color: white;
-    text-decoration: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-align: center;
-    transition: background 0.3s ease;
+  width: 100%;
+  background-color: #024626; /* Deep Green from reference image */
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  transition: background 0.3s ease;
 }
 
 .btn-order-now:hover {
-    background-color: #006837;
+  background-color: #006837;
 }
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
 
 /* Tablets (1024px and below) -> 2 items per row */
 @media (max-width: 1024px) {
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
 
 /* Phones (600px and below) -> 1 item per row */
 @media (max-width: 600px) {
-    .product-grid {
-        grid-template-columns: 1fr;
-        padding: 20px 10%;
-    }
+  .product-grid {
+    grid-template-columns: 1fr;
+    padding: 20px 10%;
+  }
 
-    .p-weight { font-size: 1.2rem; }
-    .p-price { font-size: 1.4rem; }
-    .btn-order-now { font-size: 1.1rem; }
+  .p-weight {
+    font-size: 1.2rem;
+  }
+  .p-price {
+    font-size: 1.4rem;
+  }
+  .btn-order-now {
+    font-size: 1.1rem;
+  }
+}
+
+/* Layout Wrapper */
+.shop-layout {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  flex: 1;
+  min-width: 250px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  height: fit-content;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 100px; /* Keeps it visible while scrolling */
+}
+
+.sidebar h3 {
+  margin-bottom: 20px;
+  color: var(--primary-green);
+  font-size: 1.4rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  margin-bottom: 10px;
+}
+
+.category-list a {
+  text-decoration: none;
+  color: #555;
+  font-size: 1.1rem;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.category-list a:hover,
+.category-list a.active {
+  background-color: var(--primary-green);
+  color: #04693f;
+  padding-left: 20px; /* Subtle slide effect */
+}
+
+/* Product Grid Adjustments */
+.main-catalog {
+  flex: 3;
+}
+
+/* --- MOBILE FRIENDLY --- */
+@media (max-width: 768px) {
+  .shop-layout {
+    flex-direction: column; /* Stack on mobile */
+  }
+
+  .sidebar {
+    width: 100%;
+    position: relative;
+    top: 0;
+    margin-bottom: 20px;
+  }
+
+  .category-list {
+    display: flex; /* Make categories a scrollable bar on mobile */
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+
+  .category-list li {
+    flex-shrink: 0;
+  }
 }

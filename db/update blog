@@ -1,0 +1,3 @@
+ALTER TABLE blogs 
+ADD COLUMN image_path VARCHAR(255) AFTER title,
+ADD COLUMN author VARCHAR(100) AFTER image_path;

@@ -13,7 +13,7 @@
         <li><a href="about.php">About</a></li>
         <li><a href="blogs.php">Blogs</a></li>
         <li><a href="contact-us.php">Contact Us</a></li>
-        <li><a href="admin/admin.php">Admin</a></li>
+        
     </ul>
     <div class="header-socials">
         <a href="#"><i class="fab fa-twitter"></i></a>

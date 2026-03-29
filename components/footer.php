@@ -1,4 +1,10 @@
 <footer class="main-footer">
+    <a href="https://wa.me/254727334853?text=Hello%20Kageo%20Foods,%20I'm%20interested%20in%20your%20products!" 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span>Chat with us</span>
+</a>
     <div class="footer-container">
         <div class="footer-brand">
             <img src="images/logo.png" alt="Kageo Foods" class="f-logo">
@@ -17,6 +23,7 @@
         <li><a href="contact-us.php">Contact Us</a></li>
         <li><a href="admin/admin.php">Admin</a></li>
         <li><a href="products.php">Our Products</a></li>
+        <li><a href="admin/admin.php">Admin</a></li>
             </ul>
         </div>
         <div class="footer-contact">
