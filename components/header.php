@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="logo">
-        <a href="index.php"><img src="images/logo.png" alt="Kageo Foods"></a>
+        <a href="index.php"><img src="images/logo.webp" alt="Kageo Foods"></a>
     </div>
     <div class="menu-toggle" id="mobile-menu">
         <span class="bar"></span>

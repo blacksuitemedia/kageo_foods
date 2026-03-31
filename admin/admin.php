@@ -24,7 +24,7 @@ include '../config/db.php';
     <div class="admin-container">
         <aside class="admin-sidebar">
             <div class="admin-logo">
-                <img src="../images/logo.png" alt="Kageo Logo" width="50">
+                <img src="../images/logo.webp" alt="Kageo Logo" width="50">
                 <span>Admin Portal</span>
             </div>
             <nav class="admin-nav">

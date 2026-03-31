@@ -58,7 +58,11 @@
                             <h3 class="p-type"><?php echo strtoupper($row['name']); ?></h3>
                             <p class="p-weight"><?php echo $row['weight']; ?></p>
                             <div class="p-image">
-                                <img src="uploads/<?php echo $row['image_path']; ?>" alt="<?php echo $row['name']; ?>">
+                                <img src="uploads/<?php echo $row['image_path']; ?>"
+                                    alt="<?php echo $row['name']; ?>"
+                                    loading="lazy"
+                                    width="300"
+                                    height="300">
                             </div>
                             <div class="p-meta">
                                 <span class="p-price">Ksh <?php echo number_format($row['price']); ?></span>

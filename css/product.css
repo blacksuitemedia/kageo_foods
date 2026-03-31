@@ -1,56 +1,50 @@
-body {
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  margin: 0;
-  overflow-x: hidden;
-  color: var(--text-dark);
-}
+/* --- 1. GLOBAL RESET --- */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* This prevents padding from adding to element width */
+  box-sizing: border-box;
 }
 
 html,
 body {
   width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevents horizontal shaking/scrolling */
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #e6e6e6;
+  color: #333;
 }
 
-body {
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: var(--text-dark);
-}
-/* --- CONTAINER & BANNERS --- */
+/* --- 2. LAYOUT WRAPPERS --- */
 .products-container {
-  background-color: #e6e6e6;
+  width: 100%;
   padding-bottom: 50px;
 }
 
 .latest-header {
-  background-color: #ff0000; /* Red banner as requested */
+  background-color: #ff0000;
   color: white;
   text-align: center;
   padding: 15px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-/* --- THE GRID (Fixed logic) --- */
+/* --- 3. THE GRID SYSTEM --- */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Forces 4 items per row on desktop */
+  /* Desktop Default: 4 columns */
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
   padding: 40px 5%;
+  width: 100%;
 }
 
-/* --- THE CARD --- */
+/* --- 4. THE PRODUCT CARD --- */
 .product-item {
   background: #fff;
-  padding: 25px;
+  padding: 20px;
   border-radius: 15px;
   text-align: center;
   transition:
@@ -60,6 +54,7 @@ body {
   flex-direction: column;
   align-items: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  min-width: 0; /* Critical for Grid shrinking */
 }
 
 .product-item:hover {
@@ -67,128 +62,89 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* --- TYPOGRAPHY (Matched to KRAVEE Card) --- */
+/* --- 5. CARD CONTENT --- */
+.p-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.p-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
 .p-type {
   color: #006837;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 5px;
   text-transform: uppercase;
 }
 
 .p-weight {
   color: #006837;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-/* --- IMAGE CONTAINER --- */
-.p-image {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.p-image img {
-  max-height: 100%;
-  width: auto;
-  object-fit: contain;
-}
-
-/* --- META (Price & Stars) --- */
 .p-meta {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 0 5px;
+  margin-top: auto; /* Pushes price to bottom */
+  padding: 10px 0;
 }
 
 .p-price {
   color: #006837;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 800;
 }
 
-.p-stars {
-  color: #ffd700; /* Gold/Yellow Stars */
-  font-size: 1rem;
-}
-
-/* --- BUTTON (Signature Green) --- */
 .btn-order-now {
   width: 100%;
-  background-color: #024626; /* Deep Green from reference image */
+  background-color: #024626;
   color: white;
   text-decoration: none;
-  padding: 12px;
+  padding: 10px;
   border-radius: 8px;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
   text-align: center;
-  transition: background 0.3s ease;
 }
 
-.btn-order-now:hover {
-  background-color: #006837;
-}
-
-/* --- RESPONSIVE MEDIA QUERIES --- */
-
-/* Tablets (1024px and below) -> 2 items per row */
-@media (max-width: 1024px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}
-
-/* Phones (600px and below) -> 1 item per row */
-@media (max-width: 600px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-    padding: 20px 10%;
-  }
-
-  .p-weight {
-    font-size: 1.2rem;
-  }
-  .p-price {
-    font-size: 1.4rem;
-  }
-  .btn-order-now {
-    font-size: 1.1rem;
-  }
-}
-
-/* Layout Wrapper */
+/* --- THE SHOP LAYOUT --- */
+/* --- SHOP LAYOUT WRAPPER --- */
 .shop-layout {
   display: flex;
-  gap: 40px;
-  margin-top: 40px;
+  gap: 30px;
+  padding: 40px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start; /* Crucial for sticky to work */
 }
 
-/* Sidebar Styling */
+/* --- SIDEBAR (Desktop) --- */
 .sidebar {
-  flex: 1;
-  min-width: 250px;
+  flex: 0 0 280px; /* Fixed width for sidebar */
   background: #fff;
   padding: 25px;
   border-radius: 15px;
-  height: fit-content;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   position: sticky;
-  top: 100px; /* Keeps it visible while scrolling */
+  top: 20px; /* Distance from top of screen when scrolling */
+  z-index: 10;
 }
 
 .sidebar h3 {
   margin-bottom: 20px;
-  color: var(--primary-green);
+  color: #006837;
   font-size: 1.4rem;
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 10px;
@@ -196,56 +152,163 @@ body {
 
 .category-list {
   list-style: none;
-  padding: 0;
 }
 
 .category-list li {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .category-list a {
   text-decoration: none;
-  color: #555;
-  font-size: 1.1rem;
+  color: #444;
+  font-size: 1.05rem;
   display: block;
-  padding: 10px 15px;
+  padding: 12px 15px;
   border-radius: 8px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
+/* Hover & Active States */
 .category-list a:hover,
 .category-list a.active {
-  background-color: var(--primary-green);
-  color: #04693f;
-  padding-left: 20px; /* Subtle slide effect */
+  background-color: #006837;
+  color: #fff !important;
+  padding-left: 22px;
 }
 
-/* Product Grid Adjustments */
+/* --- MAIN CATALOG AREA --- */
 .main-catalog {
-  flex: 3;
+  flex: 1; /* Takes up remaining space */
+  min-width: 0; /* Prevents grid from pushing sidebar out */
 }
 
-/* --- MOBILE FRIENDLY --- */
-@media (max-width: 768px) {
+/* --- MOBILE RESPONSIVE (Samsung A16 / Narrow Screens) --- */
+@media (max-width: 850px) {
   .shop-layout {
-    flex-direction: column; /* Stack on mobile */
+    flex-direction: column; /* Stack sidebar on top of products */
+    padding: 15px;
+    gap: 15px;
   }
 
   .sidebar {
+    flex: none;
     width: 100%;
-    position: relative;
+    position: relative; /* Remove sticky on mobile */
     top: 0;
-    margin-bottom: 20px;
+    padding: 15px;
   }
 
+  /* Transform category list into a horizontal scroll bar */
   .category-list {
-    display: flex; /* Make categories a scrollable bar on mobile */
+    display: flex;
     overflow-x: auto;
     gap: 10px;
     padding-bottom: 10px;
+    /* Hide scrollbar for a cleaner look */
+    scrollbar-width: none;
+  }
+
+  .category-list::-webkit-scrollbar {
+    display: none;
   }
 
   .category-list li {
-    flex-shrink: 0;
+    flex: 0 0 auto; /* Prevents categories from shrinking */
+  }
+
+  .category-list a {
+    background: #f0f0f0;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Keeps names on one line */
+  }
+}
+/* --- THE MAIN CATALOG AREA --- */
+.main-catalog {
+  flex: 1;
+  min-width: 0; /* Critical: prevents grid from breaking container */
+}
+
+/* --- THE GRID (The "Magic" Part) --- */
+.product-grid {
+  display: grid;
+  /* This tells the browser: "Fit as many as possible, but cards must be at least 250px wide" */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+/* --- THE PRODUCT CARD --- */
+.product-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  /* Force all cards in a row to be the same height */
+  height: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+/* --- IMAGE SCALING --- */
+.p-image {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Keeps the box square */
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.p-image img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain; /* Ensures the whole jar is visible */
+}
+
+/* --- TITLE & TEXT --- */
+.p-weight {
+  color: #006837;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  /* Force title area to be same height across all cards */
+  min-height: 2.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.p-meta {
+  margin-top: auto; /* Pushes price and button to the very bottom of the card */
+  padding-top: 15px;
+}
+
+/* --- MOBILE RESPONSIVE (Samsung A16 / Narrow Screens) --- */
+@media (max-width: 600px) {
+  .product-grid {
+    /* On small phones, force EXACTLY 2 columns, ignoring the 250px rule */
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .product-item {
+    padding: 12px;
+    /* Lower the min-height for mobile to keep it compact */
+  }
+
+  .p-weight {
+    font-size: 0.9rem;
+    min-height: 2.4em;
+  }
+
+  .p-price {
+    font-size: 1.1rem;
   }
 }

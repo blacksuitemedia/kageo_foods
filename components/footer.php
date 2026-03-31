@@ -7,8 +7,8 @@
 </a>
     <div class="footer-container">
         <div class="footer-brand">
-            <img src="images/logo.png" alt="Kageo Foods" class="f-logo">
-            <img src="images/kravee-logo.png" alt="Kravee" class="f-logo-sub">
+            <img src="images/logo.webp" alt="Kageo Foods" class="f-logo">
+            <img src="images/kravee-logo.webp" alt="Kravee" class="f-logo-sub">
         </div>
         <div class="footer-address">
             <h3>Kageo Foods Limited</h3>
